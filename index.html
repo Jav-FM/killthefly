@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kill the Fly</title>
+
+    <style>
+
+        body {
+            margin: 0;
+        }
+
+        #wall {
+            width: 95vw;
+            height: 90vh;
+            background-image: url("https://github.com/Jav-FM/killtheflygame/blob/main/assets/img/wall.jpg?raw=true");
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            color: black;
+        }
+
+        #contadorH1 {
+            margin: 0;
+            font-size: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #mosca {
+          width: 150px;
+          height: 150px;
+          position: absolute;
+          animation-name: flying;
+          animation-duration: 3s;
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
+        }
+
+        @keyframes flying {
+            20% {margin-left: 140px; margin-top: 200px}
+            40% {margin-left: 70px; margin-top: 130px}
+            40% {margin-left: 190px; margin-top: 40px}
+            60% {margin-left: 20px; margin-top: 70px}
+            80% {margin-left: 200px; margin-top: 110px}
+            80% {margin-left: 10px; margin-top: 170px}
+        }
+
+        #mataMoscas {
+          width: 250px;
+          height: auto;
+          position: absolute;
+          pointer-events: none;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1 id="contadorH1"></h1>
+    <main id="wall" onmouseover="mataMoscasSigueCursor()"></main>
+    <img id='mataMoscas' src='https://github.com/Jav-FM/killtheflygame/blob/main/assets/img/matamoscasfinal.png?raw=true'>
+
+    <script>
+        let contador = 0;
+        const contadorH1 = document.getElementById("contadorH1");
+        contadorH1.innerHTML = "Flys Killed: " + contador;
+        const wall = document.getElementById("wall");
+        const mataMoscas = document.getElementById("mataMoscas");
+
+        const mataMoscasSigueCursor = () => {
+            let corX = window.event.clientX;
+            let corY = window.event.clientY;
+            mataMoscas.style.left = corX - 70 + "px";
+            mataMoscas.style.top = corY - 70 + "px";
+        }
+
+        const incrementarContador = () => {
+            contador++;
+            contadorH1.innerHTML = "Flys Killed: " + contador;
+            creadorDeMoscas();
+        };
+
+        const creadorDeMoscas = () => {
+            wall.innerHTML = "<img id='mosca' src='https://github.com/Jav-FM/killtheflygame/blob/main/assets/img/moscafinal.png?raw=true'>";
+            const mosca = document.getElementById("mosca");
+            mosca.addEventListener("click", incrementarContador);
+            const marginTop = Math.floor(Math.random() * (86 - 0)) + 0;
+            const marginLeft = Math.floor(Math.random() * (86 - 0)) + 0;
+            mosca.style.left = `${marginTop}%`;
+            mosca.style.top = `${marginLeft}%`;
+        };
+
+        creadorDeMoscas();
+
+    </script>
+</body>
+</html>
