@@ -15,7 +15,7 @@
         #wall {
             width: 95vw;
             height: 90vh;
-            background-image: url("https://github.com/Jav-FM/killtheflygame/blob/main/assets/img/wall.jpg?raw=true");
+            background-image: url("assets/img/wall.jpg");
             background-repeat: no-repeat;
             background-size: cover;
             position: relative;
@@ -59,7 +59,7 @@
 <body>
     <h1 id="contadorH1"></h1>
     <main id="wall" onmouseover="mataMoscasSigueCursor()"></main>
-    <img id='mataMoscas' src='https://github.com/Jav-FM/killtheflygame/blob/main/assets/img/matamoscasfinal.png?raw=true'>
+    <img id='mataMoscas' src='assets/img/matamoscasfinal.png'>
 
     <script>
         let contador = 0;
@@ -82,7 +82,7 @@
         };
 
         const creadorDeMoscas = () => {
-            wall.innerHTML = "<img id='mosca' src='https://github.com/Jav-FM/killtheflygame/blob/main/assets/img/moscafinal.png?raw=true'>";
+            wall.innerHTML = "<img id='mosca' src='assets/img/moscafinal.png'>";
             const mosca = document.getElementById("mosca");
             mosca.addEventListener("click", incrementarContador);
             const marginTop = Math.floor(Math.random() * (86 - 0)) + 0;
