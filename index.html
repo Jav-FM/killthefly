@@ -69,8 +69,8 @@
         const mataMoscas = document.getElementById("mataMoscas");
 
         const mataMoscasSigueCursor = () => {
-            let corX = window.event.clientX;
-            let corY = window.event.clientY;
+            let corX = event.x;
+            let corY = event.y;
             mataMoscas.style.left = corX - 70 + "px";
             mataMoscas.style.top = corY - 70 + "px";
         }
